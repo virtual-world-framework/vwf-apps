@@ -18,7 +18,7 @@ properties:
   renderStyle: "3D"
   imageryProvider: "bingAerialLabel"
 children:
-  sky: 
+  sun: 
     extends: http://vwf.example.com/cesium/sun.vwf 
   atmosphere: 
     extends: http://vwf.example.com/cesium/atmosphere.vwf 
