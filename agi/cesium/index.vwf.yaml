@@ -14,16 +14,13 @@
 --- 
 extends: http://vwf.example.com/cesium.vwf
 properties:
-  controlClient: "NONE"
+  backgroundColor: [ 0, 0, 0, 0 ]
+  renderStyle: "3D"
+  imageryProvider: "bingAerialLabel"
 children:
-  cesiumInstance:
-    extends: http://vwf.example.com/node3.vwf
-    properties:
-      cameraControllerData:
-      cameraViewData: 
-      backgroundColor: 
-      skyBox:
-      skyAtmosphere:
-      transition: "3D"
-      imageryProvider: "bingAerialLabel"
-      sun: false
+  sky: 
+    extends: http://vwf.example.com/cesium/sun.vwf 
+  atmosphere: 
+    extends: http://vwf.example.com/cesium/atmosphere.vwf 
+  skybox: 
+    extends: http://vwf.example.com/cesium/skybox.vwf 
