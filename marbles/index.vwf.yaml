@@ -394,12 +394,10 @@ children:
       shadowDarkness: 0.2
 scripts:
 - |
-  var initialCam = [0.798465371131897, -0.6020503044128418, 0, 0, 0.6020503044128418, 0.798465371131897, 0, 0, 0, 0, 1, 0, -1.1765320301055908, -0.9326445460319519, 1.2000001668930054, 1];
-  this.initialize = function() {
-    this.camera.transform = initialCam;
-
-    this.camera.far = this.camera.far * 4;
-    this.maxSpeed = 2;
-    this.translationSpeed = 0.2;
-    this.rotationSpeed = 0.4;
-  };
+    this.initialize = function() {
+      this.camera.transform = [ 0.798465371131897, -0.6020503044128418, 0, 0, 0.6020503044128418, 0.798465371131897, 0, 0, 0, 0, 1, 0, -1.1765320301055908, -0.9326445460319519, 1.2000001668930054, 1 ];
+      this.camera.far = this.camera.far * 4;
+      this.maxSpeed = 2;
+      this.translationSpeed = 0.2;
+      this.rotationSpeed = 0.4;
+    };

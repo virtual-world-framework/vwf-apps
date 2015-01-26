@@ -18,8 +18,6 @@ properties:
   navmode: walk
   translationSpeed: 10
   rotationSpeed: 10
-methods:
-  initializeCamera:
 children:
   flat_terrain:
     extends: http://vwf.example.com/node3.vwf
@@ -36,10 +34,6 @@ scripts:
 - |
   this.initialize = function() {
     this.humvee.Ground.visible = false;
-    this.future( 0 ).initializeCamera();
-  } 
-
-  this.initializeCamera = function() {
     this.camera.translation = this.lesson.cameraPoseEnteringVehicle.translation;
     this.camera.rotation = this.lesson.cameraPoseEnteringVehicle.rotation;
     this.camera.far = 3000;

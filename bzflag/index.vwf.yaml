@@ -81,7 +81,6 @@ properties:
               material: 
                 extends: http://vwf.example.com/material.vwf
 methods:
-  initializeCamera:
   createPlayer:
   rejoinPlayer: 
   fireLaser:
@@ -203,13 +202,11 @@ scripts:
       this.lasers.children.create("Laser"+this.laserCount, newBolt);
       this.laserCount += 1;
     }
-    this.future( 0 ).initializeCamera();
-  }
-  this.initializeCamera = function() {
     this.camera.translation = [ 0, 0, 1800 ];
     this.camera.far = 1000000;
     this.camera.near = 1;
   }
+  
   //Create player has two options.
   //  The player exists. In which case, fail and return false.
   //  The player doesn't exist. In which case, suceed and return true.
