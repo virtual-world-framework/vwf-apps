@@ -18,7 +18,6 @@ properties:
   backgroundColor: "rgba(0,0,0,0)"
   clientColors: [ [ 0, 0, 255 ], [ 255, 0, 0 ], [ 255, 255, 0 ], [ 0, 255, 0 ], [ 0, 255, 255 ], [ 255, 0, 255 ], [ 255, 153, 0 ], [ 153, 153, 153 ], [ 230, 230, 250 ], [ 0, 0, 0 ] ]
 methods:
-  initializeCamera:
   createClient:
   removeClient:
   createVideo:
@@ -33,10 +32,6 @@ children:
 scripts:
 - |
     this.initialize = function(){
-      this.future( 0 ).initializeCamera();
-    }
-
-    this.initializeCamera = function() {
       this.camera.navmode = "none";
     }
 

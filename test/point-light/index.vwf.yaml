@@ -16,7 +16,6 @@ extends: http://vwf.example.com/scene.vwf
 properties:
   spinning: true
 methods:
-  initializeCamera:
   spin:
 children:
   sceneCenter:
@@ -34,30 +33,20 @@ children:
     children:
       testLight:
         extends: http://vwf.example.com/light.vwf
-        implements:
-        - http://vwf.example.com/glgeLight.vwf
         properties: 
           lightType: "point"
           enable: true
           distance: 2000
           intensity: 3
           color: [ 255, 255, 255 ]
-          glge-constantAttenuation: 0.3
-          glge-linearAttenuation: 0.00000001
-          glge-quadraticAttenuation: 0.0000001  
-          translation: [ 120, 0, 0 ]      
+          translation: [ 120, 0, 0 ]
 scripts:
 - |
-    this.initialize = function(){
-      this.future( 0 ).initializeCamera();
-      this.future(1.0).spin();
-    }
-
-    this.initializeCamera = function() {
+    this.initialize = function() {
       this.camera.translation = [ 0, -15, 0 ];
       this.camera.navmode = "walk";
+      this.future(1.0).spin();
     }
-
     this.spin = function() {
       if ( this.spinning ) {
         this.earth.rotateBy( [ 0, 0, 1, 0.5 ] );

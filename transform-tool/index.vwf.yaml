@@ -46,46 +46,30 @@ children:
       translation: [ 0, 0, 0 ]
   point1:
     extends: http://vwf.example.com/light.vwf
-    implements:
-    - http://vwf.example.com/glgeLight.vwf
     properties:
       lightType: "point"
       enable: true
       distance: 2000
       intensity: 2
       color: [ 128, 128, 128 ]
-      glge-constantAttenuation: 0.3
-      glge-linearAttenuation: 0.00000001
-      glge-quadraticAttenuation: 0.0000001  
       translation: [ -400, 400, -900 ]
   point2:
     extends: http://vwf.example.com/light.vwf
-    implements:
-    - http://vwf.example.com/glgeLight.vwf
     properties:
       lightType: "point"
       enable: true
       distance: 2000
       intensity: 2
       color: [ 128, 128, 128 ]
-      glge-constantAttenuation: 0.3
-      glge-linearAttenuation: 0.00000001
-      glge-quadraticAttenuation: 0.0000001  
       translation: [ 400, 400, 900 ]
 scripts:
 - |
     this.initialize = function(){
-
       if ( this.transformTool !== undefined ) {
         this.transformTool.testTool();
       }
 
-      // the camera creation isn't finished at this point so we need to 
-      // call the function in the future
-      this.future(0).initializeActiveCamera();
-    }
-    this.initializeActiveCamera = function() {
       this.camera.transform = [ -1,0,0,0, 0,-1,0,0, 0,0,1,0, 0,900,0,1 ];
       this.camera.near = 1;
       this.camera.far = 100000;
-    }    
+    }

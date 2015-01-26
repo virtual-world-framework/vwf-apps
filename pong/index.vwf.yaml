@@ -4,7 +4,6 @@ properties:
   keyPressInfo:
   paddleSpeed: 2.5
 methods:
-  initializeCamera:
   update:
   movePlayer:
 children:
@@ -101,16 +100,14 @@ children:
 scripts:
 - |
     this.initialize = function() {
-      this.future( 0 ).initializeCamera();
-      this.future( 0 ).update();
-    }
-    this.initializeCamera = function() {
       this.camera.translation = [ 250, -550, 150 ];
       this.camera.rotation = [ 1, 0, 0, -10 ];
 
       // Disable navigation
       this.camera.touchmode = "none";
       this.camera.navmode = "none";
+
+      this.future( 0 ).update();
     }
     this.update = function() {
       if ( this.keyPressInfo ) {

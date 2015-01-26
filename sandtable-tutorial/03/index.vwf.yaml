@@ -25,8 +25,8 @@ properties:
         this.navmode = "none";
       }
     value: "orbit"
-methods:
-  initializeCamera:
+  pushpinIndex: 1
+  pushpin: 
 children:
   flat_terrain:
     extends: http://vwf.example.com/node3.vwf
@@ -53,22 +53,13 @@ children:
 scripts:
 - |
   this.initialize = function() {
-    
-    // Wait until the queue resumes to set camera properties, so we are sure that the camera has been created
-    // TODO: When we can assume that initialize doesn't complete until all created nodes are in place, this
-    //       will no longer need to be a future call because we will be able to assume that the camera exists
-    this.future( 0 ).initializeCamera();
-  }
-
-  this.initializeCamera = function() {
     this.camera.translation = [ 0, 20000, 10000 ];
     this.camera.far = 500000;
     this.camera.near = 2;
     this.camera.lookAt = this.sceneCenter.id;
   }
 
-  var pushpinIndex = 1;
-  var pushpin = {
+  this.pushpin = {
     extends: "http://vwf.example.com/node3.vwf",
     source: "models/pushpinred.dae",
     type: "model/vnd.collada+xml",
@@ -85,10 +76,10 @@ scripts:
 
   this.pindrop = function( pickInfo ) {
     if ( pickInfo && pickInfo.globalPosition ) {
-      pushpin.properties.translation = pickInfo.globalPosition;
+      this.pushpin.properties.translation = pickInfo.globalPosition;
 
-      var name = "pushpin"+pushpinIndex;
-      this.children.create( name, pushpin );
-      pushpinIndex++;
+      var name = "pushpin"+this.pushpinIndex;
+      this.children.create( name, this.pushpin );
+      this.pushpinIndex++;
     }
   }

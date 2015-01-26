@@ -34,7 +34,7 @@ children:
   sun:
     extends: http://vwf.example.com/node3.vwf
     properties:
-      rotation: [ 1, 0, 0, 90 ]  
+      rotation: [ 1, 0, 0, 90 ]
     children:
       light:
         extends: http://vwf.example.com/pointlight.vwf
@@ -81,8 +81,8 @@ children:
             radius: 0.393
             segmentsWidth: 32
             segmentsHeight: 32
-          translation: [ 120, 0, 0 ] 
-          scale: [ 5.5, 5.5, 5.5 ] 
+          translation: [ 120, 0, 0 ]
+          scale: [ 5.5, 5.5, 5.5 ]
         children:
           material:
             extends: http://vwf.example.com/material.vwf
@@ -110,7 +110,7 @@ children:
             radius: 0.9523
             segmentsWidth: 32
             segmentsHeight: 32
-          translation: [ 135, 0, 0 ]  
+          translation: [ 135, 0, 0 ]
           scale: [ 5.5, 5.5, 5.5 ]
         children:
           material:
@@ -216,7 +216,7 @@ children:
             radius: 0.5319
             segmentsWidth: 32
             segmentsHeight: 32
-          translation: [ 180, 0, 0 ]  
+          translation: [ 180, 0, 0 ]
           scale: [ 5.5, 5.5, 5.5 ]
         children:
           material:
@@ -245,7 +245,7 @@ children:
             radius: 11.1
             segmentsWidth: 32
             segmentsHeight: 32
-          translation: [ 360, 0, 0 ]  
+          translation: [ 360, 0, 0 ]
           scale: [ 5.5, 5.5, 5.5 ]
         children:
           material:
@@ -274,7 +274,7 @@ children:
             radius: 9.41
             segmentsWidth: 32
             segmentsHeight: 32
-          translation: [ 600, 0, 0 ]  
+          translation: [ 600, 0, 0 ]
           scale: [ 5.5, 5.5, 5.5 ]
         children:
           material:
@@ -303,7 +303,7 @@ children:
             radius: 4
             segmentsWidth: 32
             segmentsHeight: 32
-          translation: [ 1080, 0, 0 ]  
+          translation: [ 1080, 0, 0 ]
           scale: [ 5.5, 5.5, 5.5 ]
         children:
           material:
@@ -332,7 +332,7 @@ children:
             radius: 3.88
             segmentsWidth: 32
             segmentsHeight: 32
-          translation: [ 2040, 0, 0 ]  
+          translation: [ 2040, 0, 0 ]
           scale: [ 5.5, 5.5, 5.5 ]
         children:
           material:
@@ -361,7 +361,7 @@ children:
             radius: 1.801
             segmentsWidth: 32
             segmentsHeight: 32
-          translation: [ 3960, 0, 0 ]  
+          translation: [ 3960, 0, 0 ]
           scale: [ 5.5, 5.5, 5.5 ]
         children:
           material:
@@ -390,7 +390,7 @@ children:
             radius: 5000
             segmentsWidth: 256
             segmentsHeight: 256
-          translation: [ 0, 0, 0 ]  
+          translation: [ 0, 0, 0 ]
         children:
           material:
             extends: http://vwf.example.com/material.vwf

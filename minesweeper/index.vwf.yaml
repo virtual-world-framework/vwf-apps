@@ -36,7 +36,6 @@ properties:
   gameInProgress: false
   tileMap: []
 methods:
-  initializeCamera:
   startGame:
   setupGame:
 children: 
@@ -588,16 +587,14 @@ scripts:
         8, 9, 10, 11,
         12, 13, 14, 15
       ];
-      this.future( 0 ).initializeCamera();
-    }
-
-    this.initializeCamera = function() {
       this.camera.transform = [ -1,      0,      0,     0,
                                  0,     -0.5,   -0.87,  0,
                                  0,     -0.87,   0.5,   0,
                                  0.089, 32.294, 69.995, 1 ];
-      
+      this.camera.navmode = "none";
       this.camera.touchmode = "none";
+      this.camera.near = 1;
+      this.camera.far = 200;
     }
 
     this.startGame = function() {
