@@ -54,6 +54,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "black"
+              side: "back"
       ShuffleCube: 
         extends: http://vwf.example.com/node3.vwf 
         children: 
@@ -83,6 +84,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "black"
+              side: "front"
       SolveCube: 
         extends: http://vwf.example.com/node3.vwf 
         children: 
@@ -123,6 +125,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
   tile2: 
     extends: http://vwf.example.com/node3.vwf
     source: tile02.dae
@@ -151,6 +154,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
   tile3: 
     extends: http://vwf.example.com/node3.vwf
     source: tile03.dae
@@ -178,7 +182,8 @@ children:
           material: 
             extends: http://vwf.example.com/material.vwf 
             properties:
-              color: "darkblue"       
+              color: "darkblue"
+              side: "back"     
   tile4: 
     extends: http://vwf.example.com/node3.vwf
     source: tile04.dae
@@ -207,6 +212,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "front"
   tile5: 
     extends: http://vwf.example.com/node3.vwf
     source: tile05.dae
@@ -235,6 +241,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
   tile6: 
     extends: http://vwf.example.com/node3.vwf
     source: tile06.dae
@@ -263,6 +270,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
   tile7: 
     extends: http://vwf.example.com/node3.vwf
     source: tile07.dae
@@ -291,6 +299,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
   tile8: 
     extends: http://vwf.example.com/node3.vwf
     source: tile08.dae
@@ -319,6 +328,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "front"
   tile9: 
     extends: http://vwf.example.com/node3.vwf
     source: tile09.dae
@@ -347,6 +357,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
   tile10: 
     extends: http://vwf.example.com/node3.vwf
     source: tile10.dae
@@ -375,6 +386,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
       Text10_2: 
         extends: http://vwf.example.com/node3.vwf 
         children: 
@@ -382,6 +394,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
   tile11: 
     extends: http://vwf.example.com/node3.vwf
     source: tile11.dae
@@ -410,6 +423,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
       Text11_2: 
         extends: http://vwf.example.com/node3.vwf 
         children: 
@@ -417,6 +431,7 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
   tile12: 
     extends: http://vwf.example.com/node3.vwf
     source: tile12.dae
@@ -445,13 +460,15 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
       Text12_2: 
         extends: http://vwf.example.com/node3.vwf 
         children: 
           material: 
             extends: http://vwf.example.com/material.vwf 
             properties:
-              color: "darkblue"   
+              color: "darkblue"
+              side: "back"
   tile13: 
     extends: http://vwf.example.com/node3.vwf
     source: tile13.dae
@@ -480,13 +497,15 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
       Text13_2: 
         extends: http://vwf.example.com/node3.vwf 
         children: 
           material: 
             extends: http://vwf.example.com/material.vwf 
             properties:
-              color: "darkblue"     
+              color: "darkblue"
+              side: "back" 
   tile14: 
     extends: http://vwf.example.com/node3.vwf
     source: tile14.dae
@@ -515,13 +534,15 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "front"
       Text14_2: 
         extends: http://vwf.example.com/node3.vwf 
         children: 
           material: 
             extends: http://vwf.example.com/material.vwf 
             properties:
-              color: "darkblue" 
+              color: "darkblue"
+              side: "back"
   tile15: 
     extends: http://vwf.example.com/node3.vwf
     source: tile15.dae
@@ -550,13 +571,15 @@ children:
             extends: http://vwf.example.com/material.vwf 
             properties:
               color: "darkblue"
+              side: "back"
       Text15_2: 
         extends: http://vwf.example.com/node3.vwf 
         children: 
           material: 
             extends: http://vwf.example.com/material.vwf 
             properties:
-              color: "darkblue"     
+              color: "darkblue"
+              side: "back"
 scripts:
 - |
     this.initialize = function() {
