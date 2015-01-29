@@ -49,5 +49,4 @@ scripts:
     this.initialize = function() {
       this.camera.translation = [ 0, -600, 50 ];
       this.camera.navmode = "none";
-      this.future(.05).update();
     } //@ sourceURL=index.vwf
