@@ -16,6 +16,7 @@ extends: http://vwf.example.com/scene.vwf
 properties:
   counter: 0
   activeCamera:
+  ambientColor: [ 180, 180, 180 ]
 methods:
   update: 
 children:
@@ -37,12 +38,11 @@ children:
   dir1:
     extends: http://vwf.example.com/light.vwf
     properties:
-      lightType: "point"
+      lightType: "directional"
       enable: true
-      distance: 2000
-      intensity: 1.4
+      intensity: 0.3
       color: [ 255, 255, 255 ]
-      translation: [ 0, -300, 0 ]
+      translation: [ 0, -400, 0 ]
 scripts:
 - | 
     this.initialize = function()
