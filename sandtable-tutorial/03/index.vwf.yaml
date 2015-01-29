@@ -19,7 +19,8 @@ properties:
   navmode: "orbit"
   mouseMode:
     set: |
-      if( value == "orbit" ) {
+      this.mouseMode = value;
+      if ( value == "orbit" ) {
         this.navmode = "orbit";
       } else {
         this.navmode = "none";
@@ -69,8 +70,8 @@ scripts:
   };
 
   this.pointerUp = function( parms, pickInfo ){
-    if( this.mouseMode == "pindrop") {
-        this.pindrop( pickInfo );
+    if ( this.mouseMode == "pindrop") {
+      this.pindrop( pickInfo );
     }
   }
 
