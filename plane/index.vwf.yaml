@@ -13,8 +13,6 @@
 
 --- 
 extends: http://vwf.example.com/scene.vwf
-methods:
-  initializeCamera:
 children:
   plane:
     extends: plane.vwf
@@ -36,24 +34,15 @@ children:
     extends: http://vwf.example.com/node3.vwf  
   dir1:
     extends: http://vwf.example.com/directionallight.vwf
-    implements:
-    - http://vwf.example.com/glgeLight.vwf
     properties:
       distance: 2000
       intensity: 0.9
       color: [ 255, 255, 255 ]
       position: [ 0, -1, 0 ]
       rotation: [ 0, 0, 1, 90 ]
-      glge-constantAttenuation: 0.3
-      glge-linearAttenuation: 0.00000001
-      glge-quadraticAttenuation: 0.0000001  
 scripts:
 - |
     this.initialize = function(){
-      this.future( 0 ).initializeCamera();
-      this.dir1.translation = [ 0, -100, 0 ];
-    }
-
-    this.initializeCamera = function() {
       this.camera.translation = [ 0, -30, 0 ];
+      this.dir1.translation = [ 0, -100, 0 ];
     }

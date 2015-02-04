@@ -247,7 +247,7 @@
       <init_from>0_AirForceCharacter.png</init_from>
     </image>
     <image id="NavyCharacter_png">
-      <init_from>3_NavyCharacter.png</init_from>
+      <init_from>0_AirForceCharacter.png</init_from>
     </image>
   </library_images>
   <library_visual_scenes>

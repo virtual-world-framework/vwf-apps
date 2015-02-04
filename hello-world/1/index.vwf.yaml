@@ -11,30 +11,31 @@
 # or implied. See the License for the specific language governing permissions and limitations under
 # the License.
 
----
+--- 
 extends: http://vwf.example.com/scene.vwf
-properties:
-  backgroundColor: [ 83, 157, 194 ]
-  navmode: walk
-  translationSpeed: 10
-  rotationSpeed: 10
-children:
-  flat_terrain:
+children: 
+  hello: 
     extends: http://vwf.example.com/node3.vwf
-    source: terrain.dae
+    source: hello.dae
     type: model/vnd.collada+xml
+    properties: 
+      translation: [ 1, 0, 0 ]
+      rotation: [ 0, 0, 1, 180 ]
+      scale: 1
+  light:
+    extends: http://vwf.example.com/light.vwf
     properties:
-      translation: [ -500, 1000, 0 ]
-      scale: [ 0.001, 0.001, 0.000001 ]
-  humvee:
-    includes: /humvee/humvee.vwf
-  lesson:
-    includes: lesson.vwf
+      lightType: "point"
+      enable: true
+      distance: 2000
+      intensity: 0.3
+      color: [ 255, 255, 255 ]
+      translation: [ 0, -30, 8 ]
 scripts:
 - |
-  this.initialize = function() {
-    this.humvee.Ground.visible = false;
-    this.camera.translation = this.lesson.cameraPoseEnteringVehicle.translation;
-    this.camera.rotation = this.lesson.cameraPoseEnteringVehicle.rotation;
-    this.camera.far = 3000;
-  } //@ sourceURL=index.vwf
+    this.initialize = function() {
+      this.camera.transform = [ -1,  0, 0, 0,
+                                 0, -1, 0, 0,
+                                 0,  0, 1, 0,
+                                 0,  5, 0, 1 ];
+    }

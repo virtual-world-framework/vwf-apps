@@ -17,7 +17,6 @@ properties:
   navmode: "orbit"
   translationSpeed: 40
 methods:
-  initializeCamera:
   switchCameraView: 
 children:
   humvee:
@@ -29,9 +28,6 @@ scripts:
       -0.9332156777381897, -0.3145570456981659, -0.17364755272865295, 0,
       -0.1645519733428955, -0.05546514317393303, 0.9848077297210693, 0,
       -1.3992034196853638, -11.587126731872559, 75.94760131835938, 1];
-    this.future( 0 ).initializeCamera();
-  }
-  this.initializeCamera = function() {
     this.camera.translation = [ -320, -360, 164 ];
     this.camera.lookAt = this.humvee.id;
     this.camera.far = 3000;

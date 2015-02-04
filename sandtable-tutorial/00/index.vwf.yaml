@@ -1,4 +1,4 @@
-# Copyright 2013 United States Government, as represented by the Secretary of Defense, Under
+# Copyright 2012 United States Government, as represented by the Secretary of Defense, Under
 # Secretary of Defense (Personnel & Readiness).
 # 
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -14,27 +14,14 @@
 ---
 extends: http://vwf.example.com/scene.vwf
 properties:
-  backgroundColor: [ 83, 157, 194 ]
-  navmode: walk
-  translationSpeed: 10
-  rotationSpeed: 10
+  ambientColor: [ 183, 183, 183 ]
 children:
-  flat_terrain:
+  blueCube:
     extends: http://vwf.example.com/node3.vwf
-    source: terrain.dae
+    source: models/BlueCube.dae
     type: model/vnd.collada+xml
-    properties:
-      translation: [ -500, 1000, 0 ]
-      scale: [ 0.001, 0.001, 0.000001 ]
-  humvee:
-    includes: /humvee/humvee.vwf
-  lesson:
-    includes: lesson.vwf
 scripts:
 - |
   this.initialize = function() {
-    this.humvee.Ground.visible = false;
-    this.camera.translation = this.lesson.cameraPoseEnteringVehicle.translation;
-    this.camera.rotation = this.lesson.cameraPoseEnteringVehicle.rotation;
-    this.camera.far = 3000;
-  } //@ sourceURL=index.vwf
+    this.camera.translation = [ 0, -100, 0 ];
+  }

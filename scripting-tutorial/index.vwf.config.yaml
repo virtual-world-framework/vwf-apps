@@ -1,4 +1,4 @@
-# Copyright 2012 United States Government, as represented by the Secretary of Defense, Under
+# Copyright 2013 United States Government, as represented by the Secretary of Defense, Under
 # Secretary of Defense (Personnel & Readiness).
 # 
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -12,12 +12,8 @@
 # the License.
 
 ---
-properties:
-  content: ""
-  title: ""
-  savename: 0
-scripts:
-- |
-  this.initialize = function() {
-    this.savename = this.random().toString().split(".")[1];
-  }
+model:
+  vwf/model/threejs:
+view:
+  vwf/view/threejs: "#vwf-root"
+  vwf/view/editor: 
