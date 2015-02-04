@@ -22,10 +22,14 @@ children:
     extends: http://vwf.example.com/node3.vwf
     source: duck.dae
     type: model/vnd.collada+xml
+    properties:
+      rotation: [ 0, 0, 1, -90 ]
   duck2:
     extends: http://vwf.example.com/node3.vwf
     source: duck.dae
     type: model/vnd.collada+xml  
+    properties:
+      rotation: [ 0, 0, 1, -15 ]    
   dir1:
     extends: http://vwf.example.com/light.vwf
     properties:
@@ -39,19 +43,17 @@ children:
 scripts:
 - | 
     this.initialize = function() {
-      this.duck.translation = [ -100, 0, 0 ];
-      this.duck2.translation = [ 100, 0, 0 ];
-      this.camera.translation = [ 0, -600, 0 ];
-      this.camera.navmode = "none";
+      this.duck.translation = [ -150, 0, 0 ];
+      this.duck2.translation = [ 150, 0, 0 ];
+      this.camera.translation = [ 0, -1000, 100 ];
+      this.camera.navmode = "fly";
       this.future(0.2).update();
     }
     this.update = function() {
       if ( this.counter == 0 )
         this.camera.lookAt = this.duck.id;
       if ( this.counter == 50 ) {
-        // TODO: duck2 does not seem to have a transform property for model\threejs.js getWorldTransform function
-        //this.camera.lookAt = this.duck2.id;
-        this.camera.lookAt = [ 100, 0, 0 ];
+        this.camera.lookAt = this.duck2.id;
       }
         
       this.counter++;  
