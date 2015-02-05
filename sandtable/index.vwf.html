@@ -122,8 +122,10 @@
               if ( parameters[ 0 ].button == "left" ) {
                 switch ( inputMode ) {
                   case "pindrop":
-                    pickInfo = parameters[ 1 ];
-                    vwf_view.kernel.callMethod( appID, "pindrop", [ pickInfo ] );
+                    if ( nodeId == vwf_view.kernel.find(vwf_view.kernel.application(), "/terrain")[0] ) {
+                      pickInfo = parameters[ 1 ];
+                      vwf_view.kernel.callMethod( appID, "pindrop", [ pickInfo ] );
+                    }
                     break;  
                 }
                 lastDrawPoint = undefined;
