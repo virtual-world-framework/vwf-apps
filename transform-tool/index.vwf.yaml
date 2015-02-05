@@ -73,3 +73,6 @@ scripts:
       this.camera.near = 1;
       this.camera.far = 100000;
     }
+    this.pointerDown = function( p1, p2 ) {
+      
+    }
