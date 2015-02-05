@@ -401,3 +401,6 @@ scripts:
       this.translationSpeed = 0.2;
       this.rotationSpeed = 0.4;
     };
+    this.pointerDown = function() {
+      // This event is handled in the view
+    }
