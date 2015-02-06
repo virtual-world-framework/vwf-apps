@@ -25,53 +25,21 @@ properties:
         this.drive();
       }
     value: "none"
+children:
+  humvee:
+    includes: /demos/humvee/humvee.vwf
 methods:
   drive:
   driveForward:
   driveReverse:
   driveLeft:
   driveRight:
-children:
-  humvee:
-    extends: http://vwf.example.com/node3.vwf
-    source: humvee.dae
-    type: model/vnd.collada+xml
-    children:
-      MaxScene:
-        extends: http://vwf.example.com/node3.vwf
-        children:
-          Humvee:
-            extends: http://vwf.example.com/node3.vwf
-            children:
-              Tire01:
-                extends: http://vwf.example.com/node3.vwf
-                properties:
-                  rotation: [ 0, 0, 1, 25 ]
-              Tire02:
-                extends: http://vwf.example.com/node3.vwf
-                properties:
-                  rotation: [ 0, 0, 1, 25 ]
-              Tire03:
-                extends: http://vwf.example.com/node3.vwf
-                properties:
-                  rotation: [ 0, 0, 1, 0 ]
-              Tire04:
-                extends: http://vwf.example.com/node3.vwf
-                properties:
-                  rotation: [ 0, 0, 1, 0 ]
-          EnvironmentAmbientLight:
-            extends: http://vwf.example.com/node3.vwf
-          Omni001:
-            extends: http://vwf.example.com/node3.vwf
-          Omni002:
-            extends: http://vwf.example.com/node3.vwf
-          Ground:
-            extends: http://vwf.example.com/node3.vwf
 scripts:
 - |
   this.initialize = function() {
     this.camera.translation = [ -500, -500, 235 ];
     this.camera.lookAt = this.humvee.id;
+    this.humvee.Ground.visible = false;
   }
 
   this.drive = function() {
@@ -98,19 +66,27 @@ scripts:
   }
 
   this.driveForward = function() {
+    var currPos = this.humvee.translation;
+    currPos[0] -= 1;
+    this.humvee.translation = [ currPos[0], currPos[1], currPos[2] ];
 
+    var currRot = this.humvee.TireDriverFront.rotation;
+    if( currRot[3] < 2 ) currRot[3] = 180;
+    currRot[3] -= 2;
+    this.humvee.TireDriverFront.rotation = [ 0, 1, 0, currRot[3] ];
+    this.humvee.TirePassFront.rotation = [ 0, 1, 0, currRot[3] ];
+    this.humvee.TireDriverRear.rotation = [ 0, 1, 0, currRot[3] ];
+    this.humvee.TirePassRear.rotation = [ 0, 1, 0, currRot[3] ];
   }
 
   this.driveReverse = function() {
-
+    // Code in scripts.vwf
   }
 
   this.driveLeft = function() {
-    this.humvee.MaxScene.Humvee.Tire01.rotation = [ 0, 0, 1, 25 ];
-    this.humvee.MaxScene.Humvee.Tire02.rotation = [ 0, 0, 1, 25 ];
+    // Code in scripts.vwf
   }
 
   this.driveRight = function() {
-    this.humvee.MaxScene.Humvee.Tire01.rotation = [ 0, 0, 1, -25 ];
-    this.humvee.MaxScene.Humvee.Tire02.rotation = [ 0, 0, 1, -25 ];
+    // Code in scripts.vwf
   }
