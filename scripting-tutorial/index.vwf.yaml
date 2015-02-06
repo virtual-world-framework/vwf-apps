@@ -80,13 +80,47 @@ scripts:
   }
 
   this.driveReverse = function() {
-    // Code in scripts.vwf
+    var currPos = this.humvee.translation;
+    currPos[0] += 1;
+    this.humvee.translation = [ currPos[0], currPos[1], currPos[2] ];
+
+    var currRot = this.humvee.TireDriverFront.rotation;
+    if( currRot[3] > 178 ) currRot[3] = 0;
+    currRot[3] += 2;
+    this.humvee.TireDriverFront.rotation = [ 0, 1, 0, currRot[3] ];
+    this.humvee.TirePassFront.rotation = [ 0, 1, 0, currRot[3] ];
+    this.humvee.TireDriverRear.rotation = [ 0, 1, 0, currRot[3] ];
+    this.humvee.TirePassRear.rotation = [ 0, 1, 0, currRot[3] ];
   }
 
   this.driveLeft = function() {
-    // Code in scripts.vwf
+    this.humvee.TireDriverFront.rotation = [ 0, 0, 1, 25 ];
+    this.humvee.TirePassFront.rotation = [ 0, 0, 1, 25 ];
+
+    var currPos = this.humvee.translation;
+    currPos[0] -= 1;
+    currPos[1] -= 1;
+    this.humvee.translation = [ currPos[0], currPos[1], currPos[2] ];
+
+    var currRot = this.humvee.TireDriverFront.rotation;
+    if( currRot[3] < 2 ) currRot[3] = 180;
+    currRot[3] -= 2;
+    this.humvee.TireDriverRear.rotation = [ 0, 1, 0, currRot[3] ];
+    this.humvee.TirePassRear.rotation = [ 0, 1, 0, currRot[3] ];
   }
 
   this.driveRight = function() {
-    // Code in scripts.vwf
+    this.humvee.TireDriverFront.rotation = [ 0, 0, 1, -25 ];
+    this.humvee.TirePassFront.rotation = [ 0, 0, 1, -25 ];
+
+    var currPos = this.humvee.translation;
+    currPos[0] -= 1;
+    currPos[1] += 1;
+    this.humvee.translation = [ currPos[0], currPos[1], currPos[2] ];
+
+    var currRot = this.humvee.TireDriverFront.rotation;
+    if( currRot[3] < 2 ) currRot[3] = 180;
+    currRot[3] -= 2;
+    this.humvee.TireDriverRear.rotation = [ 0, 1, 0, currRot[3] ];
+    this.humvee.TirePassRear.rotation = [ 0, 1, 0, currRot[3] ];
   }
