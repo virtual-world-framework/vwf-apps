@@ -8,7 +8,7 @@
 # 
 #   - vwf.model.object.Node 'prototype1.vwf' does not have a valid behaviors array 
 # 
-#   - vwf.model.javascript.initializingNodeFromPrototype: index-vwf:n-nn-x:n-nn-xx exception in initialize: 
+#   - vwf.model.javascript.initializingNodeFromPrototype: index.vwf:n-nn-x:n-nn-xx exception in initialize:
 #       TypeError: Cannot read property 'hasOwnProperty' of undefined
 #         ...
 # 

@@ -14,14 +14,14 @@ function setMute() {
 		$('#mute').removeClass('icon-volume-up').addClass('icon-volume-off');
 		//vwfMedia.setMute( true );
       
-    vwf_view.kernel.callMethod( "index-vwf", "setLocalMute", { "moniker": vwf_view.kernel.moniker() , "value": true } );
+    vwf_view.kernel.callMethod( "index.vwf", "setLocalMute", { "moniker": vwf_view.kernel.moniker() , "value": true } );
   }
   else {
 		$('#muteButton').removeClass('btn-danger').addClass('btn-info');
 		$('#mute').removeClass('icon-volume-off').addClass('icon-volume-up');
 		//vwfMedia.setMute( false );
 
-    vwf_view.kernel.callMethod( "index-vwf", "setLocalMute", { "moniker": vwf_view.kernel.moniker() , "value": false } );
+    vwf_view.kernel.callMethod( "index.vwf", "setLocalMute", { "moniker": vwf_view.kernel.moniker() , "value": false } );
   }
 }
 
