@@ -59,7 +59,7 @@ vwf_view.createdNode = function(nodeID, childID, childExtendsID, childImplements
 };
 
 vwf_view.deletedNode = function ( nodeID ) { 
-    if ( nodeID.slice(0, 33) == "http-vwf-example-com-clients-vwf:" ) {
+    if ( vwf_view.kernel.find( nodeID, "parent::element(*,'http://vwf.example.com/clients.vwf')" ).length > 0 ) {
         // There is currently no way to match the deleted client to its associated navigation object
         // so loop over all the navobjects and set the one without a client to disconnected
         var appID = vwf_view.kernel.application();
