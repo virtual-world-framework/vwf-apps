@@ -10,7 +10,7 @@
 # 
 # 3. Load a second client in the same instance.
 # 
-# 4. Execute: vwf_view.kernel.execute( "index.vwf", "this.fire()" )
+# 4. Execute: vwf_view.kernel.execute( vwf_view.kernel.application(), "this.fire()" )
 # 
 # 5. On both clients, observe in the console:
 # 

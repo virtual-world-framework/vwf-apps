@@ -45,7 +45,7 @@
                 clientName = $('#userName').val().replace(/ /g,"_");
                 $( this ).dialog( "close" );
                 var parms = [ vwf_view.kernel.moniker(), clientName ];
-                vwf_view.kernel.callMethod( "index.vwf", "createClient", parms );
+                vwf_view.kernel.callMethod( vwf_view.kernel.application(), "createClient", parms );
                             
                 var options = {
                   enableHighAccuracy: true,
@@ -65,7 +65,7 @@
                     "latitude": pos.coords.latitude,
                     "moniker": vwf_view.kernel.moniker()                             
                   }
-                  vwf_view.kernel.callMethod( "index.vwf", "locationCaptured", [ parms ] );
+                  vwf_view.kernel.callMethod( vwf_view.kernel.application(), "locationCaptured", [ parms ] );
                 };
 
                 function errorLocation(err) {
