@@ -14,7 +14,7 @@ var playerNode = undefined;
 var playerName = undefined;
 var sceneID = vwf_view.kernel.application();
 
-var canvas = $('#' + sceneID).get(0);
+var canvas = $( "#vwf-root canvas" ).get(0);
 var keyStates = { keysDown: {}, mods: {}, keysUp: {} };
 var buttonStates = {left: false, middle: false, right: false};
 var lastUpdateTime = 0;
