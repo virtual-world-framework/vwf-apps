@@ -46,6 +46,7 @@
   $('html').css("overflow-y","hidden");
 
   var view = this;
+  var localUserName = undefined;
 	// The user login dialog
   $( '#login' ).dialog( {
     title: 'Login',
@@ -70,8 +71,14 @@
           // Call the function in the model to create the new user object
           var kernel = vwf_view.kernel;
           view.myUserObjectId = vwf_view.kernel.find("","/navobj_" + vwf_view.kernel.moniker())[0];
-          kernel.setProperty( view.myUserObjectId, "userName", userName );
-          kernel.callMethod( view.myUserObjectId, "initializeObjectLookup", [ ] );
+
+          if ( view.myUserObjectId !== undefined ) {
+            kernel.setProperty( view.myUserObjectId, "userName", userName );
+            kernel.callMethod( view.myUserObjectId, "initializeObjectLookup", [ ] );            
+          } else {
+            localUserName = userName;
+          }
+
         }
       }
     }
@@ -128,6 +135,21 @@
       vwf_view.kernel.callMethod( view.myUserObjectId, "callActivityMethod", [ "selectionDeselect", [ ] ] );
     }
   } );
+
+  vwf_view.initializedNode = function( nodeID, childID, childExtendsID, childImplementsIDs,
+          childSource, childType, childIndex, childName ) {
+
+    if ( localUserName !== undefined && childName !== undefined && childName.indexOf( "navobj_" ) !== -1 ) {
+        var kernel = vwf_view.kernel;
+        view.myUserObjectId = kernel.find( "", "/navobj_" + kernel.moniker() )[0];
+
+        if ( view.myUserObjectId !== undefined ) {
+          kernel.setProperty( view.myUserObjectId, "userName", localUserName );
+          kernel.callMethod( view.myUserObjectId, "initializeObjectLookup", [ ] );
+          localUserName = undefined;            
+        }      
+    }
+  }
 
   // The event handler that is called whenever an event is fired from the model
   vwf_view.firedEvent = function( nodeId, eventName, eventParameters ) {
