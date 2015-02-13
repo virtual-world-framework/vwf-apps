@@ -56,18 +56,18 @@ children:
             properties:
               texture1Src: "images/cloud.png"
               texture2Src: "images/lavatile.jpg"
-              deltaTime: 0
+              totalTime: 1
             methods:
-              updateTime:
+              update:
                 parameters:
                   - timeElasped
                 body: |
-                  this.deltaTime = this.deltaTime + timeElasped;
-                  this.future( 0.1 ).updateTime( 0.1 );
+                  this.totalTime = this.totalTime + timeElasped;
+                  this.future( 0.1 ).update( 0.1 );
             scripts:
             - |
                 this.initialize = function() {
-                  this.future( 0 ).updateTime( 0.001 );
+                  this.future( 2 ).update( 0.1 );
                 } 
   mercury:
     extends: http://vwf.example.com/node3.vwf
@@ -150,17 +150,17 @@ children:
             children:
               material:
                 extends: http://vwf.example.com/shaderMaterial.vwf
-                type: shader/definition
+                type: material/definition
                 properties:
-                  shaderDefinition:
-                    type: normalmap
-                    uniforms:
-                      tNormal: { type: 't', pValue: 'images/earth_normal_2048.jpg' }
-                      tDiffuse: { type: 't', pValue: 'images/earth_surface_2048.jpg' }
-                      tSpecular: { type: 't', pValue: 'images/earth_specular_2048.jpg' }
-                      enableSpecular: { type: 'i', pValue: true }
-                      enableDiffuse: { type: 'i', pValue: true }
-                    lights: true            
+                  materialDefinition:
+                    type: MeshPhongMaterial
+                    color: 0xdddddd
+                    specular: 0x333333
+                    shininess: 15
+                    map: images/earth_surface_2048.jpg
+                    specularMap: images/earth_specular_2048.jpg
+                    normalMap: images/earth_normal_2048.jpg
+                    normalScale: [ 0.85, 0.85 ]
             methods:
               spin: |
                 this.rotateBy( [ 0, 1, 0, 1, 0 ] );          
@@ -168,9 +168,8 @@ children:
             scripts:
             - |
                 this.initialize = function() {
-                  this.future( 0 ).spin();
+                  this.future( 0.5 ).spin();
                 } 
-                                
           clouds:
             extends: http://vwf.example.com/threejs/sphere.vwf
             properties:
@@ -193,7 +192,7 @@ children:
             scripts:
             - |
                 this.initialize = function() {
-                  this.future( 0 ).spin();
+                  this.future( 0.5 ).spin();
                 } 
     methods:
       spin: |
@@ -202,7 +201,7 @@ children:
     scripts:
     - |
         this.initialize = function() {
-          this.future( 0 ).spin();
+          this.future( 0.5 ).spin();
         } 
   mars:
     extends: http://vwf.example.com/node3.vwf

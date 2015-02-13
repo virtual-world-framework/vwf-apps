@@ -5,32 +5,27 @@ properties:
     set: |
       this.uniforms.mixTex.value = this.newTexture( value );
       this.mixMapSrc = value;
-      this.updateUniforms();
   defTexSrc:
     set: |
       this.uniforms.defTex.value = this.newTexture( value );
       this.defTexSrc = value;
-      this.updateUniforms();
   redTexSrc:
     set: |
       this.uniforms.redTex.value = this.newTexture( value );
       this.redTexSrc = value;
-      this.updateUniforms();
   grnTexSrc:
     set: |
       this.uniforms.grnTex.value = this.newTexture( value );
       this.grnTexSrc = value;
-      this.updateUniforms();
   bluTexSrc:
     set: |
       this.uniforms.bluTex.value = this.newTexture( value );
       this.bluTexSrc = value;
-      this.updateUniforms();
   textureResolution:
     set: |
       this.uniforms.texRes.value = value;
       this.textureResolution = value;
-      this.updateUniforms();
+      //@ sourceURL=mixMap.textureResolution.set.vwf
   uniforms:
     mixTex:
       type: "t"
@@ -85,8 +80,6 @@ properties:
         gl_FragColor = vec4( finalColor, 1.0 );
     }
 methods:
-  updateUniforms: |
-    this.uniforms = this.uniforms;
   newTexture:
     parameters:
       - value
