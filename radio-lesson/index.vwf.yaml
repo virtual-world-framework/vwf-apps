@@ -34,7 +34,7 @@ children:
   sceneCenter:
     extends: http://vwf.example.com/node3.vwf
   radio: 
-    includes: /radio/radio.vwf
+    includes: ../radio/radio.vwf
   lesson:
     includes: lesson.vwf
 scripts:
