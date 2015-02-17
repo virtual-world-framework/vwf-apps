@@ -5,24 +5,24 @@
 # 
 # 2. Observe in the console:
 # 
-#   vwf.model.javascript#beta: from alpha to beta index-vwf:2-94-beta
-#   vwf.model.javascript#alpha: from beta to alpha index-vwf:1-69-alpha
+#   vwf.model.javascript#beta: from alpha to beta index.vwf:2-94-beta
+#   vwf.model.javascript#alpha: from beta to alpha index.vwf:1-69-alpha
 # 
 # 3. Load a second client in the same instance.
 # 
-# 4. Execute: vwf_view.kernel.execute( "index-vwf", "this.fire()" )
+# 4. Execute: vwf_view.kernel.execute( vwf_view.kernel.application(), "this.fire()" )
 # 
 # 5. On both clients, observe in the console:
 # 
-#   vwf.model.javascript#beta: from alpha to beta index-vwf:2-94-beta
-#   vwf.model.javascript#alpha: from beta to alpha index-vwf:1-69-alpha
+#   vwf.model.javascript#beta: from alpha to beta index.vwf:2-94-beta
+#   vwf.model.javascript#alpha: from beta to alpha index.vwf:1-69-alpha
 # 
 # Before commit b35c711, the listener on `alpha.event` in the late-joining client would not have a
 # context node. This would cause the listener to run on the global root instead of on `beta`. The
 # second client's console would show:
 # 
 #   vwf.model.javascript#0: from alpha to undefined 0
-#   vwf.model.javascript#alpha: from beta to alpha index-vwf:1-40-alpha
+#   vwf.model.javascript#alpha: from beta to alpha index.vwf:1-40-alpha
 
 ---
 

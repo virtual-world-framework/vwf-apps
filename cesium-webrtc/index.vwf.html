@@ -37,7 +37,7 @@
               $( this ).dialog( "close" );
               var parms = [ vwf_view.kernel.moniker(), clientName ];
 
-              vwf_view.kernel.callMethod( "index-vwf", "createClient", parms );
+              vwf_view.kernel.callMethod( vwf_view.kernel.application(), "createClient", parms );
                  
               var options = {
                 enableHighAccuracy: true,
@@ -57,14 +57,14 @@
                   "latitude": pos.coords.latitude,
                   "moniker": vwf_view.kernel.moniker()                             
                 }
-                vwf_view.kernel.callMethod( "index-vwf", "locationCaptured", [ parms ] );
+                vwf_view.kernel.callMethod( vwf_view.kernel.application(), "locationCaptured", [ parms ] );
 
               };
 
               var errorLocation = function( err ) {
                 console.warn('ERROR(' + err.code + '): ' + err.message);
                 // If location error occurs, hide billboard and label from view
-                vwf_view.kernel.callMethod( "index-vwf", "hideInvalidBillboard", [ clientName ]);
+                vwf_view.kernel.callMethod( vwf_view.kernel.application(), "hideInvalidBillboard", [ clientName ]);
               };                            
 
               navigator.geolocation.getCurrentPosition( gotLocation, errorLocation, options );
