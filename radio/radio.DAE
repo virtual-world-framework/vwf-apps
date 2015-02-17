@@ -4750,79 +4750,79 @@
   </library_lights>
   <library_images>
     <image id="earpiece_psd">
-      <init_from>./images/earpiece.png</init_from>
+      <init_from>images/earpiece.png</init_from>
     </image>
     <image id="BeltClipFront_png">
-      <init_from>./images/BeltClipFront.png</init_from>
+      <init_from>images/BeltClipFront.png</init_from>
     </image>
     <image id="BlackPlasticRough_png">
-      <init_from>./images/BlackPlasticRough.png</init_from>
+      <init_from>images/BlackPlasticRough.png</init_from>
     </image>
     <image id="beltclip_png">
-      <init_from>./images/beltclip.png</init_from>
+      <init_from>images/beltclip.png</init_from>
     </image>
     <image id="ic40red_png">
-      <init_from>./images/ic40red.png</init_from>
+      <init_from>images/ic40red.png</init_from>
     </image>
     <image id="icomBatteryLabel_png">
-      <init_from>./images/icomBatteryLabel.png</init_from>
+      <init_from>images/icomBatteryLabel.png</init_from>
     </image>
     <image id="icomBatteryLatch_png">
-      <init_from>./images/icomBatteryLatch.png</init_from>
+      <init_from>images/icomBatteryLatch.png</init_from>
     </image>
     <image id="icomBatterySides_png">
-      <init_from>./images/icomBatterySides.png</init_from>
+      <init_from>images/icomBatterySides.png</init_from>
     </image>
     <image id="icomBatteryTop_png">
-      <init_from>./images/icomBatteryTop.png</init_from>
+      <init_from>images/icomBatteryTop.png</init_from>
     </image>
     <image id="icomRadioBack_png">
-      <init_from>./images/icomRadioBack.png</init_from>
+      <init_from>images/icomRadioBack.png</init_from>
     </image>
     <image id="icomRadioBottom_png">
-      <init_from>./images/icomRadioBottom.png</init_from>
+      <init_from>images/icomRadioBottom.png</init_from>
     </image>
     <image id="icomRadioFront_png">
-      <init_from>./images/icomRadioFront.png</init_from>
+      <init_from>images/icomRadioFront.png</init_from>
     </image>
     <image id="icomRadioInnerThreads_png">
-      <init_from>./images/icomRadioInnerThreads.png</init_from>
+      <init_from>images/icomRadioInnerThreads.png</init_from>
     </image>
     <image id="icomRadioInside1_png">
-      <init_from>./images/icomRadioInside1.png</init_from>
+      <init_from>images/icomRadioInside1.png</init_from>
     </image>
     <image id="icomRadioInside2_png">
-      <init_from>./images/icomRadioInside2.png</init_from>
+      <init_from>images/icomRadioInside2.png</init_from>
     </image>
     <image id="icomRadioLeft_png">
-      <init_from>./images/icomRadioLeft.png</init_from>
+      <init_from>images/icomRadioLeft.png</init_from>
     </image>
     <image id="icomRadioMetal_png">
-      <init_from>./images/icomRadioMetal.png</init_from>
+      <init_from>images/icomRadioMetal.png</init_from>
     </image>
     <image id="icomRadioMetalTab_png">
-      <init_from>./images/icomRadioMetalTab.png</init_from>
+      <init_from>images/icomRadioMetalTab.png</init_from>
     </image>
     <image id="icomRadioOuterThreads_png">
-      <init_from>./images/icomRadioOuterThreads.png</init_from>
+      <init_from>images/icomRadioOuterThreads.png</init_from>
     </image>
     <image id="icomRadioRight_png">
-      <init_from>./images/icomRadioRight.png</init_from>
+      <init_from>images/icomRadioRight.png</init_from>
     </image>
     <image id="icomRadioTop_png">
-      <init_from>./images/icomRadioTop.png</init_from>
+      <init_from>images/icomRadioTop.png</init_from>
     </image>
     <image id="icomRadioantenna_png">
-      <init_from>./images/icomRadioantenna.png</init_from>
+      <init_from>images/icomRadioantenna.png</init_from>
     </image>
     <image id="icomradioantenna_groove_png">
-      <init_from>./images/icomradioantenna_groove.png</init_from>
+      <init_from>images/icomradioantenna_groove.png</init_from>
     </image>
     <image id="icomradioclip_png">
-      <init_from>./images/icomradioclip.png</init_from>
+      <init_from>images/icomradioclip.png</init_from>
     </image>
     <image id="lcd_png">
-      <init_from>./images/lcd.png</init_from>
+      <init_from>images/lcd.png</init_from>
     </image>
   </library_images>
   <library_visual_scenes>
