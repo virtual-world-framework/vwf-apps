@@ -5,19 +5,15 @@ properties:
     set: |
       this.uniforms.texture1.value = this.newTexture( value );
       this.texture1Src = value;
-      this.updateUniforms();
   texture2Src:
     set: |
       this.uniforms.texture2.value = this.newTexture( value );
       this.texture2Src = value;
-      this.updateUniforms();
-  deltaTime:
+  totalTime:
     set: |
-      if ( this.uniforms !== undefined ) {
-        this.uniforms.deltaTime.value = value;
-        this.deltaTime = value;
-      }
-      //this.updateUniforms();
+      this.uniforms.dTime.value = value;
+      this.totalTime = value;
+      //@ sourceURL=sunshader.delta.set.vwf
   uniforms:
     texture1:
       type: "t"
@@ -25,7 +21,7 @@ properties:
     texture2:
       type: "t"
       value: 0
-    deltaTime:
+    dTime: 
       type: "f"
       value: 0
   vertexShader: |
@@ -36,14 +32,14 @@ properties:
         gl_Position = projectionMatrix * mvPosition;
       }
   fragmentShader: |
-      uniform float deltaTime;
+      uniform float dTime;
       uniform sampler2D texture1;
       uniform sampler2D texture2;
       varying vec2 texCoord;
       void main() {
         vec4 noise = texture2D( texture1, texCoord );
-        vec2 T1 = texCoord + vec2( 1.5, -1.5 ) * deltaTime  * 0.01;
-        vec2 T2 = texCoord + vec2( -0.5, 2.0 ) * deltaTime *  0.01;
+        vec2 T1 = texCoord + vec2( 1.5, -1.5 ) * dTime  * 0.01;
+        vec2 T2 = texCoord + vec2( -0.5, 2.0 ) * dTime *  0.01;
         T1.x -= noise.r * 2.0;
         T1.y += noise.g * 4.0;
         T2.x += noise.g * 0.2;
@@ -54,8 +50,6 @@ properties:
         gl_FragColor = temp;
       }
 methods:
-  updateUniforms: |
-    this.uniforms = this.uniforms;
   newTexture:
     parameters:
       - value

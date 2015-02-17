@@ -12,9 +12,9 @@
 // the License.
 var playerNode = undefined;
 var playerName = undefined;
-var sceneNode = vwf.find("","/")[0];
+var sceneID = vwf_view.kernel.application();
 
-var canvas = $('#' + sceneNode).get(0);
+var canvas = $( "#vwf-root canvas" ).get(0);
 var keyStates = { keysDown: {}, mods: {}, keysUp: {} };
 var buttonStates = {left: false, middle: false, right: false};
 var lastUpdateTime = 0;
@@ -59,7 +59,7 @@ vwf_view.createdNode = function(nodeID, childID, childExtendsID, childImplements
 };
 
 vwf_view.deletedNode = function ( nodeID ) { 
-    if ( nodeID.slice(0, 33) == "http-vwf-example-com-clients-vwf:" ) {
+    if ( vwf_view.kernel.find( nodeID, "parent::element(*,'http://vwf.example.com/clients.vwf')" ).length > 0 ) {
         // There is currently no way to match the deleted client to its associated navigation object
         // so loop over all the navobjects and set the one without a client to disconnected
         var appID = vwf_view.kernel.application();
@@ -83,7 +83,7 @@ vwf_view.deletedNode = function ( nodeID ) {
 
 canvas.onmousedown = function(e) {
     if(playerNode) {
-        vwf_view.kernel.callMethod(sceneNode, "fireLaser", [playerName]);
+        vwf_view.kernel.callMethod(sceneID, "fireLaser", [playerName]);
     }
 };
 
@@ -108,7 +108,7 @@ window.onkeydown = function(e) {
         switch (e.keyCode) {
             case 13:
                 if(laserCount < 3) {
-                    vwf_view.kernel.callMethod(sceneNode, "fireLaser", [playerName]);
+                    vwf_view.kernel.callMethod(sceneID, "fireLaser", [playerName]);
                     laserCount++;
                 }
                 break;
@@ -178,7 +178,7 @@ $('#chatInput').keydown(function(e) {
     e.stopPropagation();
     var code = (e.keyCode ? e.keyCode : e.which);
     if (code == 13) { //Enter
-        vwf_view.kernel.callMethod(sceneNode, 'sendChat', [ playerName, $(this).val() ]);
+        vwf_view.kernel.callMethod(sceneID, 'sendChat', [ playerName, $(this).val() ]);
     }
 }).keyup(function(e) {
     e.stopPropagation();
@@ -189,7 +189,7 @@ $('#chatInput').keydown(function(e) {
 });
 
 vwf_view.firedEvent = function (nodeId, eventName, eventParameters) {
-    if (nodeId == sceneNode ) {
+    if (nodeId == sceneID ) {
         switch (eventName) {
           case "playerJoined":
             $('#serverContent').append( "<span style='color:#888888'><b>Player " + eventParameters[0] + " joined.</b><br/></span>" );
@@ -258,7 +258,7 @@ vwf_view.firedEvent = function (nodeId, eventName, eventParameters) {
 }
 
 vwf_view.gotProperty = function (nodeId, propertyName, propertyValue) {
-    if (nodeId == sceneNode) {
+    if (nodeId == sceneID) {
         switch (propertyName) {
             case "scoreBoard": 
                 updateScoreboard(propertyValue);

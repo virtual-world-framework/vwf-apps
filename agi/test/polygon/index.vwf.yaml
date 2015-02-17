@@ -63,7 +63,7 @@ children:
             flat: true
             translucent: false
             renderState:
-              lineWidth: 4.0
+              lineWidth: 1.0
   polygon:
     extends: http://vwf.example.com/cesium/geometry.vwf
     properties:
@@ -102,7 +102,7 @@ children:
             flat: true
             translucent: false
             renderState:
-              lineWidth: 4.0
+              lineWidth: 1.0
   ellipse:
     extends: http://vwf.example.com/cesium/geometry.vwf
     properties:
@@ -138,7 +138,7 @@ children:
             flat: true
             translucent: false
             renderState:
-              lineWidth: 4.0
+              lineWidth: 1.0
   circle:
     extends: http://vwf.example.com/cesium/geometry.vwf
     properties:
@@ -170,7 +170,7 @@ children:
             flat: true
             translucent: false
             renderState:
-              lineWidth: 4.0
+              lineWidth: 1.0
   extrudedRect:
     extends: http://vwf.example.com/cesium/geometry.vwf
     properties:
@@ -207,7 +207,7 @@ children:
             flat: true
             translucent: false
             renderState:
-              lineWidth: 4.0
+              lineWidth: 1.0
   extrudedEllipse:
     extends: http://vwf.example.com/cesium/geometry.vwf
     properties:
@@ -252,7 +252,7 @@ children:
             flat: true
             translucent: false
             renderState:
-              lineWidth: 4.0
+              lineWidth: 1.0
   extrudedPolygon:
     extends: http://vwf.example.com/cesium/geometry.vwf
     properties:
@@ -293,7 +293,7 @@ children:
             flat: true
             translucent: false
             renderState:
-              lineWidth: 4.0
+              lineWidth: 1.0
   cylinder:
     extends: http://vwf.example.com/cesium/geometry.vwf
     properties:
@@ -336,7 +336,7 @@ children:
             flat: true
             translucent: false
             renderState:
-              lineWidth: 4.0  
+              lineWidth: 1.0  
 #events:
 methods:
   createGeometry:  
@@ -403,7 +403,7 @@ scripts:
                   "flat": true,
                   "translucent": false,
                   "renderState": {
-                    "lineWidth": 2.0
+                    "lineWidth": 1.0
                   }
                 }
               }
@@ -469,7 +469,7 @@ scripts:
                   "flat": true,
                   "translucent": false,
                   "renderState": {
-                    "lineWidth": 2.0
+                    "lineWidth": 1.0
                   }
                 }
               }
@@ -535,7 +535,7 @@ scripts:
                   "flat": true,
                   "translucent": false,
                   "renderState": {
-                    "lineWidth": 2.0
+                    "lineWidth": 1.0
                   }
                 }
               }
