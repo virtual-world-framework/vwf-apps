@@ -19,6 +19,7 @@ children:
     source: duck.dae
     type: model/vnd.collada+xml
     properties:
+      counter: 0
       rotation: [ 0, 0, 1, 0]
     children:
       material:
@@ -31,8 +32,7 @@ children:
     scripts:
     - |
         this.initialize = function() {
-          this.counter = 0;
-          alert(this.material.texture);
+          this.material.texture = "";
           this.future(0.1).update();
         }
         this.update = function() {
