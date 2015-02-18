@@ -120,7 +120,8 @@ scripts:
 
   //  During initialization, generate all of the selection pairs of marbles.
   this.initialize = function( ) {
-    if ( this.id != "selection_table.vwf" ) {
+    // Don't generate marbles on the `selection_table.vwf` prototype.
+    if ( ! this.uri ) {
       this.future(1.5).handleInit();
     }
   };
