@@ -26,7 +26,7 @@
       // clients node), but at this point, that structure is already gone. Need a way to listen to 
       // the parent for when child nodes are added or removed.
       vwf_view.deletedNode = function ( nodeID ) { 
-        if ( nodeID.indexOf("-clients-") != -1 ) {
+        if ( nodeID.indexOf("clients.vwf") != -1 ) {
           this.logger.info("Client Left: ", nodeID);
         }
       }
