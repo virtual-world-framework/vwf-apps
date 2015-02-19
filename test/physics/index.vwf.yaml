@@ -13,6 +13,8 @@
 
 --- 
 extends: http://vwf.example.com/scene.vwf
+# properties:
+#   ambientColor: [ 100, 100, 100 ]
 children:
   box:
     extends: http://vwf.example.com/physics3.vwf
@@ -20,25 +22,21 @@ children:
     type: model/vnd.collada+xml
     properties:
       translation: [ 0, 18, 0 ]
-      rotation: [ .747, .747, 0, 45]
-      rotVelocityDamping: [ 0.05, 0.05, 0.05 ]
       # whats going on here? It seems like we can't set the rotation
+      # rotation: [ 0, 0, 1, 45]
+      rotVelocityDamping: [ 0.05, 0.05, 0.05 ]
       physics: [ "box", 1.0 , 1.0 , 1.0 ]
       friction: 0.5 
       mass: 400 
       linVelocityDamping: [ 1, 1, 1, 0 ]
       restitution: 0.10
   dir1:
-    extends: http://vwf.example.com/light.vwf
-    properties:
-      lightType: "directional"
-      distance: 1000
+    extends: "http://vwf.example.com/directionallight.vwf"
+    properties: 
+      distance: 2000
       intensity: 1
       color: [ 255, 255, 255 ]
-      castShadows: false
-      glge-constantAttenuation: 1
-      rotation: [ 1, 0, 0, -45 ]
-      translation: [ 0, 100, 0]
+      position: [ -0.7, 0.7, 0.3 ]
   groundplane:
     extends: "http://vwf.example.com/physics3.vwf"
     properties:
