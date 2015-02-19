@@ -49,7 +49,7 @@ children:
 scripts:
 - | 
     this.initialize = function() { 
-      this.camera.translation = [ 0, 0, 100 ];
+      this.camera.translation = [ 0, 0, 50 ];
       this.camera.rotation = [ 1, 0, 0, -90 ];
       this.camera.navmode = "none"; 
     }
