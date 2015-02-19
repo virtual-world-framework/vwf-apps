@@ -14,9 +14,10 @@
 --- 
 extends: http://vwf.example.com/scene.vwf
 properties:
+  count: 0
   rotationSpeed: 10
 methods:
-  tick:
+  update:
 children:
   avatar:
     extends: http://vwf.example.com/node3.vwf
@@ -46,24 +47,24 @@ children:
       translation: [ 400, 400, 900 ]
 scripts:
 - |
-    this.initialize = function(){
-      this.count = 0;
+    this.initialize = function() {
       this.camera.transform = [ -1,0,0,0, 0,-1,0,0, 0,0,1,0, 0,0,0,1 ];
       this.camera.far *= 4;
+      this.future(0.1).update();
     }
-    this.tick = function()
-    {
+    this.update = function() {
       this.count++;
       if(this.count % 100 == 0) {
-        this.children.create('testnew',{
+        this.children.create('testnew', {
           extends: "http://vwf.example.com/node3.vwf",
           implements:[ "http://vwf.example.com/animation.vwf" ],
           source: "usmale.dae",
           type: "model/vnd.collada+xml",
           properties: {
             rotation: [ 1, 0, 0, 0 ],
-            translation: [(Math.random() - .5) * 10,(Math.random() - .5) * 10,(Math.random() - .5) * 10]
+            translation: [(this.random() - .5) * 10,(this.random() - .5) * 10,(this.random() - .5) * 10]
           }            
         });
       }
+      this.future(0.1).update();
     }
