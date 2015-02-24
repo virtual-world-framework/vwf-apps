@@ -1,0 +1,7 @@
+---
+info:
+  title: "Load Testing Application"
+model:
+  nodriver:
+view:
+  vwf/view/load-test:
