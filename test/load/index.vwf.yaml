@@ -16,6 +16,7 @@
 ---
 properties:
   enabled: false
+  duration: 10
   size: 1
   interval: 1
   ping:
