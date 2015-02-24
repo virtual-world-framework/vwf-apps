@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html><head>
+
+  <meta charset="utf-8">
+
+  <title>Load Test</title>
+
+  <style>
+
+    body {
+      background: white;
+      font: 10px sans-serif;
+    }
+
+    .bar rect {
+      fill: steelblue;
+      shape-rendering: crispEdges;
+    }
+
+    .bar text {
+      fill: #fff;
+    }
+
+    .axis path, .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .label {
+      font: 14px sans-serif;
+    }
+
+  </style>
+
+</head><body>
+
+  <script>
+
+    require( [ "http://d3js.org/d3.v3.js", "https://rawgit.com/tmcw/simple-statistics/master/src/simple_statistics.js" ], function() {
+
+      var driver = vwf.views.filter( function( view ) {
+        while ( view.view ) { view = view.view }
+        return view.module.id === "vwf/view/load-test";
+      } )[ 0 ];
+
+      var data = driver && driver.state.results;  // [ { ping: timestamp, pong: timestamp }, { ... } ]
+      var lastItem;
+
+      setInterval( function() {
+
+        if ( data && data[ data.length - 1 ] !== lastItem ) {
+
+          var latencies = data.map( function( item ) {
+            return item.pong - item.ping;
+          } );
+
+          var stats = {
+            n: latencies.length,
+            min: ss.min( latencies ),
+            max: ss.max( latencies ),
+            avg: ss.mean( latencies ),
+            stddev: ss.standard_deviation( latencies ),
+          };
+
+          var params = {
+            size: driver.state.size,
+            interval: driver.state.interval,
+            duration: driver.state.duration,
+            clients: Object.keys( driver.state.clients ).length,
+            pending: driver.state.pending,
+            rate: ( data.length - 1 + driver.state.others ) / ( data[ data.length - 1 ].pong - data[0].pong ) * 1000,
+          };
+
+          graph( latencies, stats, params );
+
+          lastItem = data[ data.length - 1 ];
+        }
+
+      }, 1000 );
+
+      function graph( values, stats, params ) {
+
+        d3.selectAll("svg").remove();
+
+        // A formatter for counts.
+        var formatCount = d3.format(",.0f");
+
+        var margin = {top: 10, right: 30, bottom: 30, left: 30},
+            width = 960 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+        var x = d3.scale.linear()
+            .domain([0, 100])
+            .range([0, width]);
+
+        // Generate a histogram using twenty uniformly-spaced bins.
+        var data = d3.layout.histogram()
+            .bins(x.ticks(20))
+            (values);
+
+        var y = d3.scale.linear()
+            .domain([0, d3.max(data, function(d) { return d.y; })])
+            .range([height, 0]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+        var svg = d3.select("body").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom + 75)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        var bar = svg.selectAll(".bar")
+            .data(data)
+          .enter().append("g")
+            .attr("class", "bar")
+            .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+        bar.append("rect")
+            .attr("x", 1)
+            .attr("width", x(data[0].dx) - 1)
+            .attr("height", function(d) { return height - y(d.y); });
+
+        bar.append("text")
+            .attr("dy", ".75em")
+            .attr("y", 6)
+            .attr("x", x(data[0].dx) / 2)
+            .attr("text-anchor", "middle")
+            .text(function(d) { return formatCount(d.y); });
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+        var legend = svg.append("g")
+            .selectAll("text")
+            .data([stats])
+          .enter();
+
+        legend.append("text")
+          .attr("class","label")
+          .attr("x",0)
+          .attr("y",500)
+          .text(function(d,i) { return "n: " + d.n });
+
+        legend.append("text")
+          .attr("class","label")
+          .attr("x",1*width/10)
+          .attr("y",500)
+          .text(function(d,i) { return "min: " + d.min });
+
+        legend.append("text")
+          .attr("class","label")
+          .attr("x",2*width/10)
+          .attr("y",500)
+          .text(function(d,i) { return "max: " + d.max });
+
+        legend.append("text")
+          .attr("class","label")
+          .attr("x",3*width/10)
+          .attr("y",500)
+          .text(function(d,i) { return "avg: " + d.avg.toPrecision(4) });
+
+        legend.append("text")
+          .attr("class","label")
+          .attr("x",4*width/10)
+          .attr("y",500)
+          .text(function(d,i) { return "stddev: " + d.stddev.toPrecision(4) });
+
+        legend.append("text")
+          .attr("class","label")
+          .attr("text-anchor","end")
+          .attr("x",width)
+          .attr("y",500)
+          .text("ms");
+
+        var legend = svg.append("g");
+
+        legend.append("text")
+          .attr("class","label")
+          .attr("x",0)
+          .attr("y",525)
+          .text("size: " + params.size + "B");
+
+        legend.append("text")
+          .attr("class","label")
+          .attr("x",1*width/10)
+          .attr("y",525)
+          .text("intrvl: " + params.interval*1000 + "ms");
+
+        legend.append("text")
+          .attr("class","label")
+          .attr("x",2*width/10)
+          .attr("y",525)
+          .text("clients: " + params.clients);
+
+        legend.append("text")
+          .attr("class","label")
+          .attr("x",3*width/10)
+          .attr("y",525)
+          .text("dur: " + params.duration + "s");
+
+        var legend = svg.append("g");
+
+        legend.append("text")
+          .attr("class","label")
+          .attr("x",0)
+          .attr("y",550)
+          .text("rate: " + params.rate.toPrecision(4) + "/s");
+
+        legend.append("text")
+          .attr("class","label")
+          .attr("x",1*width/10)
+          .attr("y",550)
+          .text("unack: " + params.pending);
+
+      }
+
+    } );
+
+  </script>
+
+</body></html>
