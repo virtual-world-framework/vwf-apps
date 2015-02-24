@@ -19,4 +19,8 @@ properties:
   duration: 10
   size: 1
   interval: 1
+methods:
   ping:
+    parameters:
+      - time
+      - payload
