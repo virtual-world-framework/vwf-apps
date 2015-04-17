@@ -1,0 +1,12 @@
+---
+info:
+  title: "Tactical Decision Games"
+model:
+  vwf/model/kineticjs:
+  vwf/model/jPlayer:
+  vwf/model/mil-sym:
+view:
+  vwf/view/editor:
+  vwf/view/touch:
+  vwf/view/kineticjs:
+  vwf/view/mil-sym:

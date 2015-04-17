@@ -1,0 +1,45 @@
+--- 
+extends: http://vwf.example.com/kinetic/stage.vwf
+properties:
+  drawing_index: 0
+methods:
+  pointerDown:
+  pointerUp:
+  pointerMove:
+  touchStart:
+  touchMove:
+  touchEnd:
+  down:
+  up:
+  move:
+  update:
+children:
+  background:
+    extends: http://vwf.example.com/kinetic/layer.vwf
+    properties:
+      visible: true
+    children:
+      map:
+        extends: http://vwf.example.com/kinetic/image.vwf
+        source: "BlankCanvas.png"
+        properties:
+          image:
+            set: |
+              var stage = this.parent && this.parent.parent;
+              if ( stage ) {
+                stage.position = [ 0, 0 ];
+                stage.scale = [ 1, 1 ];
+              }
+              this.image = value;
+  baseLayer:
+    extends: http://vwf.example.com/kinetic/layer.vwf
+    properties:
+      visible: true
+    children:
+      lines:
+        extends: http://vwf.example.com/kinetic/group.vwf
+        properties:
+          visible: 'inherit'
+scripts:
+- source: "index.js" 
+
