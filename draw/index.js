@@ -3,27 +3,29 @@ this.initialize = function() {
   this.initialDownPoint = undefined;
   this.previousPoint = undefined;
   console.info(this.id);
+  this.downEvent = false;
 };
 
 this.down = function( eventData, nodeData, touch ) {
+  
+  this.downEvent = true;
   var eventPointDown = eventData.stageRelative;
-
   this.initialDownPoint = eventPointDown;
   var shapeDef = {
       "extends": "http://vwf.example.com/kinetic/line.vwf",
-        "properties": {
-        "visible": 'inherit',
+      "properties": {
+        "visible": "inherit",
         "opacity": 1,
         "z-index": 4,
-        "fill": 'blue',
-        "x": eventPoint[ 0 ],
-        "y": eventPoint[ 1 ],
-        "position": eventPoint
-    }
+        "fill": "blue",
+        "x": eventPointDown[ 0 ],
+        "y": eventPointDown[ 1 ],
+        "position": eventPointDown
+      }
   };
 
   var self = this;
-  var name = drawingMode + this.drawing_index;
+  var name = "freeHand" + this.drawing_index;
   this.drawing_index = this.drawing_index + 1;
   this.baseLayer.lines.children.create( name, shapeDef, function( child ) {
       self.drawingObject = child;
@@ -32,10 +34,13 @@ this.down = function( eventData, nodeData, touch ) {
 };
 
 this.move = function( eventData, nodeData, touch ) {
-    this.update( eventData, nodeData, false );
+    if ( this.downEvent ) {
+      this.update( eventData, nodeData, false );  
+    }
 };
 
 this.up = function( eventData, nodeData, touch ) {
+  this.downEvent = false;
   this.drawingObject = undefined;
   this.initialDownPoint = undefined;
   this.previousPoint = undefined;

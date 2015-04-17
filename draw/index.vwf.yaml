@@ -2,13 +2,14 @@
 extends: http://vwf.example.com/kinetic/stage.vwf
 properties:
   drawing_index: 0
-methods:
+events:
   pointerDown:
   pointerUp:
   pointerMove:
   touchStart:
   touchMove:
   touchEnd:
+methods:
   down:
   up:
   move:
